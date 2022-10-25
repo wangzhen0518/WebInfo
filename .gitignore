@@ -1,0 +1,7 @@
+# files
+*.pdf
+
+# folders
+output/
+data/
+.vscode/
