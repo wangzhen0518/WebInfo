@@ -161,15 +161,17 @@ def search_book(book_list, output_path):
     fp.close()
 
 
-pth = os.getcwd()
-out_pth = os.path.join(pth, "output")
-fp_movie = open(os.path.join(pth, "Movie_id.txt"), mode="r", encoding="utf-8")
-movie_read = fp_movie.readlines()
-movie_list = [i.rstrip() for i in movie_read]
-fp_movie.close()
-search_movie(movie_list[0:5], out_pth)
-fp_book = open(os.path.join(pth, "Movie_id.txt"), mode="r", encoding="utf-8")
-book_read = fp_book.readlines()
-book_list = [i.rstrip() for i in book_read]
-fp_book.close()
-search_book(book_list[0:5], out_pth)
+if __name__ == "__main__":
+    pth = os.path.split(os.path.realpath(__file__))[0]
+    data_pth = os.path.join(pth, "data")
+    out_pth = os.path.join(pth, "output")
+    fp_movie = open(os.path.join(data_pth, "Movie_id.txt"), mode="r", encoding="utf-8")
+    movie_read = fp_movie.readlines()
+    movie_list = [i.rstrip() for i in movie_read]
+    fp_movie.close()
+    search_movie(movie_list[0:5], out_pth)
+    fp_book = open(os.path.join(data_pth, "Movie_id.txt"), mode="r", encoding="utf-8")
+    book_read = fp_book.readlines()
+    book_list = [i.rstrip() for i in book_read]
+    fp_book.close()
+    search_book(book_list[0:5], out_pth)
